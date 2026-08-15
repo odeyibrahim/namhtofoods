@@ -1,0 +1,7 @@
+# Force HTTPS and redirect www to apex domain
+http://namhtofoods.com/*  https://namhtofoods.com/:splat  301!
+http://www.namhtofoods.com/*  https://namhtofoods.com/:splat  301!
+https://www.namhtofoods.com/*  https://namhtofoods.com/:splat  301!
+
+# Redirect Netlify subdomain to custom domain
+https://*.netlify.app/*  https://namhtofoods.com/:splat  301!
