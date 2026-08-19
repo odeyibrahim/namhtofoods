@@ -1037,6 +1037,61 @@
                 transform: none;
             }
         }
+
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 9999;
+            font-size: 0.9rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .cookie-banner.visible {
+            display: flex;
+        }
+        .cookie-banner p {
+            margin: 0;
+            color: var(--white);
+            max-width: 600px;
+        }
+        .cookie-banner a {
+            color: var(--light-blue);
+            text-decoration: underline;
+        }
+        .cookie-btn {
+            background: var(--accent-red);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--border-radius-small);
+            font-family: var(--font-primary);
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.85rem;
+        }
+        .cookie-btn:hover {
+            background: var(--secondary-blue);
+        }
+        .cookie-btn-decline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .cookie-btn-decline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -1045,10 +1100,20 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
       gtag('config', 'G-EV6YR3M2X4');
     </script>
 </head>
 <body>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+        <p>We use cookies to improve your experience and analyze site traffic. By continuing, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+        <button class="cookie-btn" id="cookieAccept">Accept</button>
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+    </div>
     <!-- Skip to content link for keyboard users -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -1113,12 +1178,12 @@
                     <div class="vision-mission-container">
                         <div class="vision-box">
                             <h3>Our Vision</h3>
-                            <p>To consistently produce healthy and high-quality dairy products for Nigerians.</p>
+                            <p>To build one of Africa's leading nutrition companies, improving everyday nutrition through accessible, innovative and locally manufactured food products.</p>
                         </div>
                         
                         <div class="mission-box">
                             <h3>Our Mission</h3>
-                            <p>Crafting and delivering delicious, nutritious yogurt tailored to the unique tastes of Nigeria.</p>
+                            <p>To make better nutrition accessible to African families by producing high-quality, affordable and innovative dairy-based and nutrition products that combine great taste, convenience and nutritional value.</p>
                         </div>
                     </div>
                     
@@ -1457,6 +1522,7 @@
                     <p><i class="fas fa-phone" aria-hidden="true"></i> +234 803 621 4063, +234 701 855 5666</p>
                     <p><i class="fas fa-envelope" aria-hidden="true"></i> info@namhtofoods.com</p>
                     <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> No 74, Ahmadu Bello Way, Nassarawa GRA, Kano</p>
+                    <p><i class="fas fa-shield-alt" aria-hidden="true"></i> <a href="privacy.html" style="color: var(--white);">Privacy Policy</a></p>
                     <div class="social-links">
                         <a href="https://twitter.com/namhtofoods" aria-label="Visit our Twitter page"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                         <a href="https://instagram.com/namhtofoods" aria-label="Visit our Instagram profile"><i class="fab fa-instagram" aria-hidden="true"></i></a>
@@ -1481,6 +1547,54 @@
         </div>
     </footer>
 
+
+
+    <!-- LocalBusiness Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "Namhto Foods",
+      "image": "https://namhtofoods.com/wp-content/uploads/2025/09/Namhto-Logo-e1757068156899.png",
+      "url": "https://namhtofoods.com",
+      "telephone": "+234-803-621-4063",
+      "email": "info@namhtofoods.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "No 74, Ahmadu Bello Way",
+        "addressLocality": "Nassarawa GRA, Kano",
+        "addressRegion": "Kano State",
+        "postalCode": "700241",
+        "addressCountry": "NG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 12.0022,
+        "longitude": 8.5920
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "15:00"
+        }
+      ],
+      "priceRange": "₦₦",
+      "servesCuisine": "Yogurt, Dairy",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "548"
+      }
+    }
+    </script>
 
     <!-- Product Structured Data -->
     <script type="application/ld+json">
@@ -1883,6 +1997,48 @@
                 document.body.style.overflow = 'auto';
             }
         });
+    </script>
+
+    <!-- Cookie Consent Logic -->
+    <script>
+        (function() {
+            var banner = document.getElementById('cookieBanner');
+            var consent = localStorage.getItem('namhto_cookie_consent');
+
+            if (!consent) {
+                banner.classList.add('visible');
+            }
+
+            // Default GA to use consent default state
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+
+            if (consent === 'accepted') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            } else if (consent === 'declined') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'denied'
+                });
+            }
+
+            document.getElementById('cookieAccept').addEventListener('click', function() {
+                localStorage.setItem('namhto_cookie_consent', 'accepted');
+                banner.classList.remove('visible');
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            });
+
+            document.getElementById('cookieDecline').addEventListener('click', function() {
+                localStorage.setItem('namhto_cookie_consent', 'declined');
+                banner.classList.remove('visible');
+                gtag('consent', 'update', {
+                    'analytics_storage': 'denied'
+                });
+            });
+        })();
     </script>
 </body>
 </html>
